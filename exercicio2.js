@@ -1,8 +1,3 @@
-const joao = [3, 6.5, 9] // 6.1
-const ana = [5.7, 10, 5] // 6.9 
-const fabio = [8, 9.5, 10] // 9.1
-
-
 // Fazer a média das três notas e colocar numa variável que é um array de objetos,
 // EX: 
 // mediasFinais = [
@@ -14,18 +9,52 @@ const fabio = [8, 9.5, 10] // 9.1
 // ]
 // Depois exibir individualmente num log o nome do aluno, média e situação
 
+let nameJ = "João"
+let nameA = "Ana"
+let nameF = "Fábio"
+
+const joao = [18.5] // 6.1
+const ana = [20.7] // 6.8
+const fabio = [27.5] // 9.1
+
+
+
+const mediaJoao = joao.map(num => num / 3)
+console.log(parseInt(mediaJoao));
+
+const mediaAna = ana.map(num => num / 3)
+console.log(parseInt(mediaAna));
+
+const mediaFabio = fabio.map(num => num / 3)
+console.log(parseInt(mediaFabio));
+
+if (mediaJoao >= 7 && mediaJoao <= 10) {
+    console.log("Parabéns " + nameJ + " Você está Aprovado!")
+} else(mediaJoao <= 6 && mediaJoao >= 0); {
+    console.log(nameJ + ", Infelizmente você foi Reprovado!")
+}
+
+if (mediaAna >= 7 && mediaAna <= 10) {
+    console.log("Parabéns " + nameA + " Você está Aprovada!")
+} else(mediaAna <= 6 && mediaJoao >= 0); {
+    console.log(nameA + ", Infelizmente você foi Reprovada!")
+}
+if (mediaFabio >= 7 && mediaFabio <= 10) {
+    console.log("Parabéns " + nameF + ", Você está Aprovado!")
+}
+
 mediasFinais = [{
-    nome: "joao",
-    media: 6.1,
-    situacao: "reprovado"
+    nome: "João",
+    media: parseInt(mediaJoao),
+    situacao: "Reprovado!"
 }, {
-    nome: "ana",
-    media: 6.9,
-    situacao: "reprovada"
+    nome: "Ana",
+    media: parseInt(mediaAna),
+    situacao: "Reprovada!"
 }, {
-    nome: "fabio",
-    media: 9.1,
-    situacao: "aprovado!"
+    nome: "Fabio",
+    media: parseInt(mediaFabio),
+    situacao: "Aprovado!"
 }]
 
 console.log(mediasFinais)
