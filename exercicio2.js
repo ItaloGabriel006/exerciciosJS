@@ -9,52 +9,33 @@
 // ]
 // Depois exibir individualmente num log o nome do aluno, média e situação
 
-let nameJ = "João"
-let nameA = "Ana"
-let nameF = "Fábio"
+let notasJoao = [10, 9, 3]
+let notasMaria = [9, 9, 9]
+const notasFinais = []
 
-const joao = [18.5] // 6.1
-const ana = [20.7] // 6.8
-const fabio = [27.5] // 9.1
-
-
-
-const mediaJoao = joao.map(num => num / 3)
-console.log(parseInt(mediaJoao));
-
-const mediaAna = ana.map(num => num / 3)
-console.log(parseInt(mediaAna));
-
-const mediaFabio = fabio.map(num => num / 3)
-console.log(parseInt(mediaFabio));
-
-if (mediaJoao >= 7 && mediaJoao <= 10) {
-    console.log("Parabéns " + nameJ + " Você está Aprovado!")
-} else(mediaJoao <= 6 && mediaJoao >= 0); {
-    console.log(nameJ + ", Infelizmente você foi Reprovado!")
+function fazerMedia(arrayDeNotas) {
+    const valorInicial = 0
+    const somaNotas = arrayDeNotas.reduce((estadoAnterior, estadoAtual) => estadoAnterior + estadoAtual, valorInicial)
+    const fazerCalculo = somaNotas / arrayDeNotas.length
+    const formatarNumero = fazerCalculo.toFixed(0)
+    return formatarNumero
 }
 
-if (mediaAna >= 7 && mediaAna <= 10) {
-    console.log("Parabéns " + nameA + " Você está Aprovada!")
-} else(mediaAna <= 6 && mediaJoao >= 0); {
-    console.log(nameA + ", Infelizmente você foi Reprovada!")
-}
-if (mediaFabio >= 7 && mediaFabio <= 10) {
-    console.log("Parabéns " + nameF + ", Você está Aprovado!")
+function montarObj(nomeAluno, mediaFinal) {
+    const situacao = mediaFinal >= 7 ? 'Aprovado' : 'Reprovado'
+    const finalObj = {
+        aluno: nomeAluno,
+        media: mediaFinal,
+        situacao,
+    }
+    notasFinais.push(finalObj)
+    return `${nomeAluno} adicionado ao array de notas finais`
 }
 
-mediasFinais = [{
-    nome: "João",
-    media: parseInt(mediaJoao),
-    situacao: "Reprovado!"
-}, {
-    nome: "Ana",
-    media: parseInt(mediaAna),
-    situacao: "Reprovada!"
-}, {
-    nome: "Fabio",
-    media: parseInt(mediaFabio),
-    situacao: "Aprovado!"
-}]
+const mediaJoao = fazerMedia(notasJoao)
+const mediaMaria = fazerMedia(notasMaria)
 
-console.log(mediasFinais)
+montarObj('joao', mediaJoao)
+montarObj('maria', mediaMaria)
+
+notasFinais.map((aluno) => console.log(aluno))
